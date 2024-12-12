@@ -108,6 +108,9 @@ def index():
 
 import os
 
+import os
+
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    app.run(host="0.0.0.0", port=port, debug=True)
+    port = int(os.environ.get("PORT", 5000))  # ใช้ค่า PORT จาก Environment Variable หรือ 5000 ถ้าไม่มีการกำหนด
+    app.run(host="0.0.0.0", port=port)
+
