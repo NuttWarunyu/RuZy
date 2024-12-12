@@ -1,3 +1,4 @@
+from flask import Flask, send_file
 from data_fetcher import (
     fetch_fixtures,
     fetch_standings,
@@ -9,7 +10,6 @@ from analyzer import analyze_match_outcomes
 from html_generator import generate_html
 from datetime import datetime
 from tqdm import tqdm
-import time
 
 API_KEY = "5ac618d291de54592f73b152ddb41315"
 PREMIER_LEAGUE_ID = 39
@@ -18,6 +18,9 @@ SERIE_A_ID = 135
 CURRENT_SEASON = 2024
 DAYS_AHEAD = 7
 LIVE_SCORE_UPDATE_INTERVAL = 60  # Update live score every 60 seconds
+
+# Initialize Flask
+app = Flask(__name__)
 
 def analyze_fixtures(fixtures, standings, league_id, league_name):
     """
@@ -70,8 +73,11 @@ def analyze_fixtures(fixtures, standings, league_id, league_name):
 
     return analysis_results
 
-if __name__ == "__main__":
-    print("Fetching fixtures for the nearest match date...")
+@app.route("/")
+def index():
+    """
+    Main route to fetch data, analyze fixtures, and return the HTML report.
+    """
     try:
         # Premier League
         fixtures_premier_league = fetch_fixtures(API_KEY, PREMIER_LEAGUE_ID, CURRENT_SEASON)
@@ -95,7 +101,13 @@ if __name__ == "__main__":
             serie_a_results=analysis_results_serie_a,
             output_file="analysis.html"
         )
-        print("Analysis complete. Report generated: analysis.html")
+        return send_file("analysis.html")  # Serve the HTML file as response
 
     except Exception as e:
-        print(f"Error during analysis: {e}")
+        return f"Error during analysis: {e}", 500
+
+import os
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host="0.0.0.0", port=port, debug=True)
