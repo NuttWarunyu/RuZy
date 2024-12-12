@@ -9,38 +9,31 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
-        <h1>Football Match Analysis</h1>
-
-        <!-- Live Matches -->
-        
+        <h1>ฤาษี.Ai</h1>
 
         <!-- Top Pick -->
         
         <section class="top-picks">
-            <h2>Top Pick of the Day</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Arsenal</h3>
-                    <p><strong>League:</strong> Premier League</p>
-                    <p><strong>Win Probability:</strong> 71.34%</p>
-                    <p><strong>Odds Handicap:</strong> Home -1.25</p>
-                    <p><strong>Reason:</strong> The home team is favored with a 71.34% win probability. The home team is ranked higher (3) compared to the away team (15). The home team's recent form is WWDWDWWLDLDWWWD. The away team's recent form is LLLLDWDWDLDDLW.</p>
-                    <button>More Details</button>
-                </div>
+            <h2>โอกาสผ่านราคาสูงสุด</h2>
+            <div class="card">
+                <h3>Arsenal</h3>
+                <p><strong>League:</strong> Premier League</p>
+                <p><strong>Win Probability:</strong> 71.34%</p>
+                <p><strong>Odds Handicap:</strong> Home -1.25</p>
             </div>
         </section>
         
 
         <!-- Win Probability Chart -->
         <section>
-            <h2>Win Probability Chart</h2>
+            <h2>โอกาสชนะ</h2>
             <canvas id="winProbabilityChart" width="400" height="200"></canvas>
         </section>
 
         <!-- All Matches -->
         
         <section>
-            <h2>All Matches - Premier League</h2>
+            <h2>Premier League</h2>
             <table>
                 <thead>
                     <tr>
@@ -110,7 +103,7 @@
         </section>
         
         <section>
-            <h2>All Matches - La Liga</h2>
+            <h2>La Liga</h2>
             <table>
                 <thead>
                     <tr>
@@ -140,7 +133,7 @@
         </section>
         
         <section>
-            <h2>All Matches - Serie A</h2>
+            <h2>Serie A</h2>
             <table>
                 <thead>
                     <tr>
@@ -171,8 +164,9 @@
         
 
         <script>
-            window.teams = ["Newcastle", "Wolves", "Liverpool", "Arsenal", "Nottingham Forest"];
-            window.winProbabilities = [62.5, 66.67, 66.27, 71.34, 50.0];
+            window.teams = ["Newcastle vs Leicester", "Wolves vs Ipswich", "Liverpool vs Fulham", "Arsenal vs Everton", "Nottingham Forest vs Aston Villa"];
+            window.homeWinProbabilities = [62.5, 66.67, 66.27, 71.34, 50.0];
+            window.awayWinProbabilities = [37.5, 33.33, 33.73, 28.66, 50.0];
         </script>
         <script src="static/charts.js"></script>
     </body>

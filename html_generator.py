@@ -6,9 +6,10 @@ def generate_html(results, la_liga_results, serie_a_results, live_matches=None, 
     """
     live_matches = live_matches or []
 
-    # ดึงข้อมูลสำหรับกราฟ
-    teams = [match.get("home_team", "N/A") for match in results[:5]]
-    win_probabilities = [float(match.get("home_win_probability", 0)) for match in results[:5]]
+    # คำนวณข้อมูลสำหรับกราฟ
+    match_labels = [f"{match.get('home_team', 'N/A')} vs {match.get('away_team', 'N/A')}" for match in results[:5]]
+    home_win_probabilities = [float(match.get("home_win_probability", 0)) for match in results[:5]]
+    away_win_probabilities = [float(match.get("away_win_probability", 0)) for match in results[:5]]
 
     # คำนวณ Top Pick
     try:
@@ -48,68 +49,31 @@ def generate_html(results, la_liga_results, serie_a_results, live_matches=None, 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
-        <h1>Football Match Analysis</h1>
-
-        <!-- Live Matches -->
-        {% if live_matches %}
-        <section>
-            <h2>Live Matches</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Match Time</th>
-                        <th>Home Team</th>
-                        <th>Away Team</th>
-                        <th>Live Score</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for match in live_matches %}
-                    <tr>
-                        <td>{{ match.get('match_time', 'N/A') }}</td>
-                        <td>{{ match.get('home_team', 'N/A') }}</td>
-                        <td>{{ match.get('away_team', 'N/A') }}</td>
-                        <td>{{ match.get('live_score', 'N/A') }}</td>
-                        <td class="live-status">{{ match.get('status', 'N/A') }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </section>
-        {% endif %}
+        <h1>ฤาษี.Ai</h1>
 
         <!-- Top Pick -->
         {% if top_team.team_name %}
         <section class="top-picks">
-            <h2>Top Pick of the Day</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>{{ top_team.team_name }}</h3>
-                    <p><strong>League:</strong> {{ top_team.league }}</p>
-                    <p><strong>Win Probability:</strong> {{ top_team.probability }}</p>
-                    <p><strong>Odds Handicap:</strong> {{ top_team.odds }}</p>
-                    <p><strong>Reason:</strong> {{ top_team.reason }}</p>
-                    <button>More Details</button>
-                </div>
+            <h2>โอกาสผ่านราคาสูงสุด</h2>
+            <div class="card">
+                <h3>{{ top_team.team_name }}</h3>
+                <p><strong>League:</strong> {{ top_team.league }}</p>
+                <p><strong>Win Probability:</strong> {{ top_team.probability }}</p>
+                <p><strong>Odds Handicap:</strong> {{ top_team.odds }}</p>
             </div>
-        </section>
-        {% else %}
-        <section>
-            <h2>No Top Pick Available</h2>
         </section>
         {% endif %}
 
         <!-- Win Probability Chart -->
         <section>
-            <h2>Win Probability Chart</h2>
+            <h2>โอกาสชนะ</h2>
             <canvas id="winProbabilityChart" width="400" height="200"></canvas>
         </section>
 
         <!-- All Matches -->
         {% for league_name, matches in [("Premier League", results), ("La Liga", la_liga_results), ("Serie A", serie_a_results)] %}
         <section>
-            <h2>All Matches - {{ league_name }}</h2>
+            <h2>{{ league_name }}</h2>
             <table>
                 <thead>
                     <tr>
@@ -140,8 +104,9 @@ def generate_html(results, la_liga_results, serie_a_results, live_matches=None, 
         {% endfor %}
 
         <script>
-            window.teams = {{ teams | tojson }};
-            window.winProbabilities = {{ win_probabilities | tojson }};
+            window.teams = {{ match_labels | tojson }};
+            window.homeWinProbabilities = {{ home_win_probabilities | tojson }};
+            window.awayWinProbabilities = {{ away_win_probabilities | tojson }};
         </script>
         <script src="static/charts.js"></script>
     </body>
@@ -156,8 +121,9 @@ def generate_html(results, la_liga_results, serie_a_results, live_matches=None, 
             results=results,
             la_liga_results=la_liga_results,
             serie_a_results=serie_a_results,
-            teams=teams,
-            win_probabilities=win_probabilities,
+            match_labels=match_labels,
+            home_win_probabilities=home_win_probabilities,
+            away_win_probabilities=away_win_probabilities,
             top_team=top_team
         )
         with open(output_file, "w", encoding="utf-8") as file:
