@@ -1,9 +1,152 @@
+/* ปรับ Font และ Background */
 body {
-    background-color: #f8f9fa;
-}
-h1, h2 {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
     color: #333;
+    line-height: 1.6;
 }
-.table {
-    margin-top: 20px;
+
+/* Header Title */
+h1, h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: #444;
+}
+
+/* การ์ดสำหรับ Top Pick */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* เน้นข้อความสำคัญ */
+.card h1 {
+    font-size: 28px;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.card .subtitle {
+    color: #7f8c8d;
+    margin: 10px 0;
+}
+
+.highlight {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.odds {
+    color: #c0392b;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* ตารางแสดงผล */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #34495e;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.live-status {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* การ์ดแบบ ProPicks */
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.card p {
+    margin: 5px 0;
+    color: #7f8c8d;
+}
+
+.card button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background: #27ae60;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.card button:hover {
+    background: #219150;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table, .card {
+        width: 100%;
+    }
+
+    .card-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    body {
+        padding: 10px;
+    }
+
+    h1, h2 {
+        font-size: 18px;
+    }
 }
