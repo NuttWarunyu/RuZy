@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Football Analysis</title>
+</head>
+<body>
+    <div class="container my-4">
+        <h1 class="text-center">Football Analysis</h1>
+        {% for league, matches in league_data.items() %}
+        <h2 class="mt-4">{{ league }}</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Match Date</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for match in matches %}
+                <tr>
+                    <td>{{ match.fixture.date }}</td>
+                    <td>{{ match.teams.home.name }}</td>
+                    <td>{{ match.teams.away.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+</body>
+</html>

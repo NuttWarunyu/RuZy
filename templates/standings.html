@@ -1,0 +1,31 @@
+<body>
+    <h1>ตารางอันดับลีก</h1>
+    {% if standings %}
+    <table border="1" cellspacing="0" cellpadding="10">
+        <thead>
+            <tr>
+                <th>อันดับ</th>
+                <th>ทีม</th>
+                <th>คะแนน</th>
+                <th>ชนะ</th>
+                <th>เสมอ</th>
+                <th>แพ้</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in standings %}
+            <tr>
+                <td>{{ team['rank'] }}</td>
+                <td>{{ team['team']['name'] }}</td>
+                <td>{{ team['points'] }}</td>
+                <td>{{ team['all']['win'] }}</td>
+                <td>{{ team['all']['draw'] }}</td>
+                <td>{{ team['all']['lose'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>ไม่มีข้อมูลตารางอันดับลีกในขณะนี้</p>
+    {% endif %}
+</body>

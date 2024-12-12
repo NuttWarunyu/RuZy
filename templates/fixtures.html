@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Match</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for fixture in fixtures %}
+        <tr>
+            <td>{{ fixture['name'] }}</td>
+            <td>{{ fixture['starting_at'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
