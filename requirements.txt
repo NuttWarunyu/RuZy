@@ -2,3 +2,4 @@ Flask
 requests
 Flask==2.3.2
 gunicorn
+tqdm
