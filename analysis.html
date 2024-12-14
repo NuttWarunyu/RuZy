@@ -1,174 +1,339 @@
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Match Analysis</title>
-        <link rel="stylesheet" href="static/styles.css">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </head>
-    <body>
-        <h1>ฤาษี.Ai</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Analysis</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Additional Styling */
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            gap: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .section-title {
+            color: #007bff;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .top-picks {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .top-picks .card {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">ทีเด็ดฟุตบอล.Ai - การวิเคราะห์การแข่งขันฟุตบอล</header>
 
-        <!-- Top Pick -->
-        
-        <section class="top-picks">
-            <h2>โอกาสผ่านราคาสูงสุด</h2>
-            <div class="card">
-                <h3>Arsenal</h3>
-                <p><strong>League:</strong> Premier League</p>
-                <p><strong>Win Probability:</strong> 71.34%</p>
-                <p><strong>Odds Handicap:</strong> Home -1.25</p>
-            </div>
-        </section>
-        
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#top-picks">Top Picks</a>
+        <a href="#win-probability">Win Probability</a>
+        <a href="#all-matches">All Matches</a>
+    </nav>
 
-        <!-- Win Probability Chart -->
-        <section>
-            <h2>โอกาสชนะ</h2>
+    <!-- Top Pick Section -->
+    
+    <section id="top-picks" class="top-picks">
+    <h2 class="section-title">โอกาสผ่านราคาสูงสุด</h2>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <div class="card card-rank-1">
+            <h3>Atalanta</h3>
+            <p><strong>League:</strong> Serie A</p>
+            <p><strong>Win Probability:</strong> 78.57%</p>
+            <p><strong>Odds Handicap:</strong> Home +0.5</p>
+            <p><strong>Analysis:</strong> <span style="color: red;">Bet on Away</span></p>
+            <p><strong>Goals Scored:</strong> {'home': 'N/A', 'away': 'N/A'}</p>
+            <p><strong>Standing:</strong> N/A</p>
+            <button style="background-color: #007bff; color: white; padding: 10px 15px; border-radius: 5px; border: none; cursor: pointer; margin-top: 10px;">ดูวิเคราะห์เพิ่มเติม</button>
+        </div>
+    </div>
+</section>
+    
+
+    <!-- Win Probability Chart -->
+    <section id="win-probability">
+        <h2 class="section-title">โอกาสชนะ</h2>
+        <div style="max-width: 800px; margin: auto;">
             <canvas id="winProbabilityChart" width="400" height="200"></canvas>
-        </section>
+        </div>
+    </section>
 
-        <!-- All Matches -->
-        
-        <section>
-            <h2>Premier League</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Match Date</th>
-                        <th>Home Team</th>
-                        <th>Away Team</th>
-                        <th>Win Probability</th>
-                        <th>Odds Handicap</th>
-                        <th>Handicap Analysis</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <td>14-Dec 22:00</td>
-                        <td>Newcastle</td>
-                        <td>Leicester</td>
-                        <td>Home: 62.5% / Away: 37.5%</td>
-                        <td>Home -1.25</td>
-                        <td>Bet on Home</td>
-                        <td class="live-status">Upcoming</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>14-Dec 22:00</td>
-                        <td>Wolves</td>
-                        <td>Ipswich</td>
-                        <td>Home: 66.67% / Away: 33.33%</td>
-                        <td>Home -1</td>
-                        <td>Bet on Home</td>
-                        <td class="live-status">Upcoming</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>14-Dec 22:00</td>
-                        <td>Liverpool</td>
-                        <td>Fulham</td>
-                        <td>Home: 66.27% / Away: 33.73%</td>
-                        <td>Home -1.25</td>
-                        <td>Bet on Home</td>
-                        <td class="live-status">Upcoming</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>14-Dec 22:00</td>
-                        <td>Arsenal</td>
-                        <td>Everton</td>
-                        <td>Home: 71.34% / Away: 28.66%</td>
-                        <td>Home -1.25</td>
-                        <td>Bet on Home</td>
-                        <td class="live-status">Upcoming</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>15-Dec 00:30</td>
-                        <td>Nottingham Forest</td>
-                        <td>Aston Villa</td>
-                        <td>Home: 50.0% / Away: 50.0%</td>
-                        <td>Home -0.5</td>
-                        <td>Avoid betting on Home</td>
-                        <td class="live-status">Upcoming</td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </section>
-        
-        <section>
-            <h2>La Liga</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Match Date</th>
-                        <th>Home Team</th>
-                        <th>Away Team</th>
-                        <th>Win Probability</th>
-                        <th>Odds Handicap</th>
-                        <th>Handicap Analysis</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <td>14-Dec 03:00</td>
-                        <td>Valladolid</td>
-                        <td>Valencia</td>
-                        <td>Home: 46.67% / Away: 53.33%</td>
-                        <td>Home -0.25</td>
-                        <td>Avoid betting on Home</td>
-                        <td class="live-status">Upcoming</td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </section>
-        
-        <section>
-            <h2>Serie A</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Match Date</th>
-                        <th>Home Team</th>
-                        <th>Away Team</th>
-                        <th>Win Probability</th>
-                        <th>Odds Handicap</th>
-                        <th>Handicap Analysis</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <td>14-Dec 02:45</td>
-                        <td>Empoli</td>
-                        <td>Torino</td>
-                        <td>Home: 50.0% / Away: 50.0%</td>
-                        <td>Home -0.5</td>
-                        <td>Avoid betting on Home</td>
-                        <td class="live-status">Upcoming</td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </section>
-        
+    <!-- All Matches Section -->
+    
+    <section id="all-matches">
+        <h2 class="section-title">Premier League</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Match Date</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Win Probability</th>
+                    <th>Odds Handicap</th>
+                    <th>Handicap Analysis</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>14-Dec 22:00</td>
+                    <td>Newcastle</td>
+                    <td>Leicester</td>
+                    <td>Home: 62.5% / Away: 37.5%</td>
+                    <td>Home -1.25</td>
+                    <td><span style="color: red;">Bet on Home</span></td>
+                </tr>
+                
+                <tr>
+                    <td>14-Dec 22:00</td>
+                    <td>Wolves</td>
+                    <td>Ipswich</td>
+                    <td>Home: 66.67% / Away: 33.33%</td>
+                    <td>Home -1</td>
+                    <td><span style="color: red;">Bet on Home</span></td>
+                </tr>
+                
+                <tr>
+                    <td>14-Dec 22:00</td>
+                    <td>Liverpool</td>
+                    <td>Fulham</td>
+                    <td>Home: 66.27% / Away: 33.73%</td>
+                    <td>Home -1.25</td>
+                    <td><span style="color: red;">Bet on Home</span></td>
+                </tr>
+                
+                <tr>
+                    <td>14-Dec 22:00</td>
+                    <td>Arsenal</td>
+                    <td>Everton</td>
+                    <td>Home: 71.34% / Away: 28.66%</td>
+                    <td>Home -1.25</td>
+                    <td><span style="color: red;">Bet on Home</span></td>
+                </tr>
+                
+                <tr>
+                    <td>15-Dec 00:30</td>
+                    <td>Nottingham Forest</td>
+                    <td>Aston Villa</td>
+                    <td>Home: 50.0% / Away: 50.0%</td>
+                    <td>Home -0.5</td>
+                    <td><span style="color: red;">Avoid betting on Home</span></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 15px;">
+                        <button style="background-color: #007bff; color: white; padding: 10px 15px; border-radius: 5px; border: none; cursor: pointer;">ดูวิเคราะห์เพิ่มเติม</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <section id="all-matches">
+        <h2 class="section-title">La Liga</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Match Date</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Win Probability</th>
+                    <th>Odds Handicap</th>
+                    <th>Handicap Analysis</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>14-Dec 20:00</td>
+                    <td>Espanyol</td>
+                    <td>Osasuna</td>
+                    <td>Home: 41.56% / Away: 58.44%</td>
+                    <td>Home -0.5</td>
+                    <td><span style="color: red;">Avoid betting on Home</span></td>
+                </tr>
+                
+                <tr>
+                    <td>14-Dec 22:15</td>
+                    <td>Mallorca</td>
+                    <td>Girona</td>
+                    <td>Home: 52.34% / Away: 47.66%</td>
+                    <td>Home -0.75</td>
+                    <td><span style="color: red;">Avoid betting on Home</span></td>
+                </tr>
+                
+                <tr>
+                    <td>15-Dec 00:30</td>
+                    <td>Sevilla</td>
+                    <td>Celta Vigo</td>
+                    <td>Home: 45.45% / Away: 54.55%</td>
+                    <td>Home -0.75</td>
+                    <td><span style="color: red;">Avoid betting on Home</span></td>
+                </tr>
+                
+                <tr>
+                    <td>15-Dec 03:00</td>
+                    <td>Rayo Vallecano</td>
+                    <td>Real Madrid</td>
+                    <td>Home: 32.65% / Away: 67.35%</td>
+                    <td>Home +0.5</td>
+                    <td><span style="color: red;">Bet on Away</span></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 15px;">
+                        <button style="background-color: #007bff; color: white; padding: 10px 15px; border-radius: 5px; border: none; cursor: pointer;">ดูวิเคราะห์เพิ่มเติม</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <section id="all-matches">
+        <h2 class="section-title">Serie A</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Match Date</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Win Probability</th>
+                    <th>Odds Handicap</th>
+                    <th>Handicap Analysis</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>14-Dec 21:00</td>
+                    <td>Cagliari</td>
+                    <td>Atalanta</td>
+                    <td>Home: 21.43% / Away: 78.57%</td>
+                    <td>Home +0.5</td>
+                    <td><span style="color: red;">Bet on Away</span></td>
+                </tr>
+                
+                <tr>
+                    <td>15-Dec 00:00</td>
+                    <td>Udinese</td>
+                    <td>Napoli</td>
+                    <td>Home: 37.5% / Away: 62.5%</td>
+                    <td>Home +0.25</td>
+                    <td><span style="color: red;">Bet on Away</span></td>
+                </tr>
+                
+                <tr>
+                    <td>15-Dec 02:45</td>
+                    <td>Juventus</td>
+                    <td>Venezia</td>
+                    <td>Home: 75.0% / Away: 25.0%</td>
+                    <td>Home -1.25</td>
+                    <td><span style="color: red;">Bet on Home</span></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 15px;">
+                        <button style="background-color: #007bff; color: white; padding: 10px 15px; border-radius: 5px; border: none; cursor: pointer;">ดูวิเคราะห์เพิ่มเติม</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
 
-        <script>
-            window.teams = ["Newcastle vs Leicester", "Wolves vs Ipswich", "Liverpool vs Fulham", "Arsenal vs Everton", "Nottingham Forest vs Aston Villa"];
-            window.homeWinProbabilities = [62.5, 66.67, 66.27, 71.34, 50.0];
-            window.awayWinProbabilities = [37.5, 33.33, 33.73, 28.66, 50.0];
-        </script>
-        <script src="static/charts.js"></script>
-    </body>
-    </html>
+    <script>
+        window.matchLabels = ["Newcastle vs Leicester", "Wolves vs Ipswich", "Liverpool vs Fulham", "Arsenal vs Everton", "Nottingham Forest vs Aston Villa"];
+        window.homeWinProbabilities = [62.5, 66.67, 66.27, 71.34, 50.0];
+        window.awayWinProbabilities = [37.5, 33.33, 33.73, 28.66, 50.0];
+
+        // Enhanced Chart Configuration
+        const ctx = document.getElementById('winProbabilityChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: window.matchLabels,
+                datasets: [
+                    {
+                        label: 'Home Win Probability (%)',
+                        data: window.homeWinProbabilities,
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Away Win Probability (%)',
+                        data: window.awayWinProbabilities,
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw}%`;
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'โอกาสชนะ (%)'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Matches'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Win Probability (%)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="static/charts.js"></script>
+    <footer style="background-color: #333; color: white; text-align: center; padding: 10px 0; margin-top: 20px;">
+        © 2024 ทีเด็ดฟุตบอล.Ai | วิเคราะห์การแข่งขันฟุตบอลอย่างมืออาชีพ
+    </footer>
+</body>
+</html>
     
