@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Match Analysis</title>
+    <!-- External Styles -->
     <link rel="stylesheet" href="/static/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <header class="header">⚽ทีเด็ดฟุตบอล.Ai - การวิเคราะห์การแข่งขันฟุตบอล</header>
+    <header class="header">⚽ ทีเด็ดฟุตบอล.Ai - การวิเคราะห์การแข่งขันฟุตบอล</header>
 
     <!-- Top Team to Bet On -->
     <section id="top-team-to-bet">
@@ -22,104 +22,61 @@
         </div>
     </section>
 
-  <!-- Top Performing Teams -->
-<section id="top-performing-teams">
-    <h2 class="section-title">ทีมที่มีผลงานยอดเยี่ยม</h2>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>ทีม</th>
-                    <th>โอกาสชนะ</th>
-                    <th>อันดับปัจจุบัน</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for team in top_form_teams %}
-                <tr>
-                    <td>{{ team.selected_team }}</td>
-                    <td>{{ team.win_probability }}</td>
-                    <td>{{ team.current_standing }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</section>
+    <!-- Top Performing Teams -->
+    <section id="top-performing-teams">
+        <h2 class="section-title">ทีมที่มีผลงานยอดเยี่ยม</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ทีม</th>
+                        <th>โอกาสชนะ</th>
+                        <th>อันดับปัจจุบัน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for team in top_form_teams %}
+                    <tr>
+                        <td>{{ team.selected_team }}</td>
+                        <td>{{ team.win_probability }}</td>
+                        <td>{{ team.current_standing }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-<!-- Best Handicap Performers -->
-<section id="best-handicap-performers">
-    <h2 class="section-title">ผ่านราคาต่อรองมากสุด</h2>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>ทีม</th>
-                    <th>ลีก</th>
-                    <th>ชนะราคาต่อรอง</th>
-                    <th>ประวัติราคาต่อรอง</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for team in top_handicap_teams %}
-                <tr>
-                    <td>{{ team.selected_team }}</td>
-                    <td>{{ team.league }}</td>
-                    <td>{{ team.handicap_success_count }}</td>
-                    <td>
-                        {% for performance in team.handicap_performance %}
-                            <span class="circle {% if performance == 'green' %}green{% else %}red{% endif %}"></span>
-                        {% endfor %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</section>
-
-
-
-    <style>
-        /* CSS for highlighted rows */
-        .highlight {
-            color: red;
-            font-weight: bold;
-        }
-
-        /* CSS for colored circles */
-        .circle {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin: 0 3px;
-        }
-        .circle.green {
-            background-color: green;
-        }
-        .circle.red {
-            background-color: red;
-        }
-
-        /* General table styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-    </style>
+    <!-- Best Handicap Performers -->
+    <section id="best-handicap-performers">
+        <h2 class="section-title">ผ่านราคาต่อรองมากสุด</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ทีม</th>
+                        <th>ลีก</th>
+                        <th>ชนะราคาต่อรอง</th>
+                        <th>ประวัติราคาต่อรอง</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for team in top_handicap_teams %}
+                    <tr>
+                        <td>{{ team.selected_team }}</td>
+                        <td>{{ team.league }}</td>
+                        <td>{{ team.handicap_success_count }}</td>
+                        <td>
+                            {% for performance in team.handicap_performance %}
+                                <span class="circle {% if performance == 'green' %}green{% else %}red{% endif %}"></span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
