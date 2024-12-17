@@ -19,22 +19,6 @@ def analyze_match_outcomes(api_key, league_id, season, home_team_id, away_team_i
         home_form = home_stats.get("form", "") or ""
         away_form = away_stats.get("form", "") or ""
 
-        # Analyze head-to-head results
-        home_wins_h2h = len([
-            match for match in head_to_head
-            if match.get("teams", {}).get("home", {}).get("id") == home_team_id and
-            (match.get("goals", {}).get("home") or 0) > (match.get("goals", {}).get("away") or 0)
-        ])
-        away_wins_h2h = len([
-            match for match in head_to_head
-            if match.get("teams", {}).get("away", {}).get("id") == away_team_id and
-            (match.get("goals", {}).get("away") or 0) > (match.get("goals", {}).get("home") or 0)
-        ])
-        draws_h2h = len([
-            match for match in head_to_head
-            if (match.get("goals", {}).get("home") or 0) == (match.get("goals", {}).get("away") or 0)
-        ])
-
         # Calculate win probabilities
         home_win_probability = (
             home_form.count("W") / len(home_form) * 100 if home_form and len(home_form) > 0 else 0
@@ -52,6 +36,9 @@ def analyze_match_outcomes(api_key, league_id, season, home_team_id, away_team_i
             home_win_probability = 0
             away_win_probability = 0
 
+        # Handicap performance simulation (random for now)
+        handicap_performance = ["Pass", "Pass", "Fail", "Pass", "Fail"]
+        loss_performance = ["Fail", "Fail", "Pass", "Fail", "Pass"]
 
         # Generate analysis
         analysis = {
@@ -60,12 +47,11 @@ def analyze_match_outcomes(api_key, league_id, season, home_team_id, away_team_i
             "away_team": away_stats.get("team_name", "Unknown"),
             "home_form": home_stats.get("form", "N/A"),
             "away_form": away_stats.get("form", "N/A"),
-            "home_win_probability": round(home_win_probability, 2) if home_win_probability else "N/A",
-            "away_win_probability": round(away_win_probability, 2) if away_win_probability else "N/A",
-            "win_probability": f"Home: {round(home_win_probability, 2)}% / Away: {round(away_win_probability, 2)}%"
-                if home_win_probability and away_win_probability else "N/A",
+            "home_win_probability": round(home_win_probability, 2),
+            "away_win_probability": round(away_win_probability, 2),
+            "win_probability": f"Home: {round(home_win_probability, 2)}% / Away: {round(away_win_probability, 2)}%",
             "handicap_analysis": analyze_handicap_outcome(
-              home_win_probability,
+                home_win_probability,
                 away_win_probability,
                 odds.get("handicap", None) if odds else None,
                 odds.get("odd", None) if odds else None,
@@ -75,65 +61,142 @@ def analyze_match_outcomes(api_key, league_id, season, home_team_id, away_team_i
                 away_win_probability,
                 home_rank,
                 away_rank,
-                home_stats.get("form", "N/A"),
-                away_stats.get("form", "N/A")
+                home_form,
+                away_form
             ),
-            "current_standing": f"Home Rank: {home_rank}, Away Rank: {away_rank}" if home_rank and away_rank else "N/A",
-            "last_5_matches": {
-                "home": home_stats.get("last_5_matches", "N/A"),
-                "away": away_stats.get("last_5_matches", "N/A")
-            },
-            "goals_scored": {
-                "home": home_stats.get("goals_scored", "N/A"),
-                "away": away_stats.get("goals_scored", "N/A")
-            },
-            "goals_conceded": {
-                "home": home_stats.get("goals_conceded", "N/A"),
-                "away": away_stats.get("goals_conceded", "N/A")
-            }
+            "current_standing": f"Home Rank: {home_rank}, Away Rank: {away_rank}",
+            "handicap_performance": [
+                "green" if result == "Pass" else "red" for result in handicap_performance
+            ],
+            "loss_performance": [
+                "red" if result == "Fail" else "green" for result in loss_performance
+            ]
         }
 
-        return analysis  # Return the complete analysis
+        return analysis
 
     except Exception as e:
         print(f"Error in analyze_match_outcomes: {e}")
         return {}
 
 
+def calculate_top_form_teams(analysis_results, top_n=3):
+    """
+    Calculate top-performing teams based on win probabilities.
+    """
+    try:
+        sorted_teams = sorted(
+            analysis_results,
+            key=lambda x: float(x.get("home_win_probability", 0)) + float(x.get("away_win_probability", 0)),
+            reverse=True
+        )
+        return sorted_teams[:top_n]
+    except Exception as e:
+        print(f"Error calculating top form teams: {e}")
+        return []
+
+
+def calculate_top_handicap_teams(analysis_results, top_n=5):
+    """
+    Calculate the best handicap-performing teams.
+    """
+    try:
+        for team in analysis_results:
+            team["handicap_success_count"] = team.get("handicap_performance", []).count("green")
+
+        sorted_teams = sorted(
+            analysis_results,
+            key=lambda x: x.get("handicap_success_count", 0),
+            reverse=True
+        )
+        return sorted_teams[:top_n]
+    except Exception as e:
+        print(f"Error calculating top handicap teams: {e}")
+        return []
+
+
+def calculate_losing_teams(analysis_results, top_n=5):
+    """
+    Calculate teams with the worst betting performance.
+    """
+    try:
+        for team in analysis_results:
+            team["loss_count"] = team.get("loss_performance", []).count("red")
+
+        sorted_teams = sorted(
+            analysis_results,
+            key=lambda x: x.get("loss_count", 0),
+            reverse=True
+        )
+        return sorted_teams[:top_n]
+    except Exception as e:
+        print(f"Error calculating losing teams: {e}")
+        return []
+
+
+def generate_betting_recommendations(analysis_results):
+    """
+    Generate betting recommendations based on analyzed match results.
+    """
+    recommendations = []
+    for result in analysis_results:
+        try:
+            home_team = result.get("home_team", "N/A")
+            away_team = result.get("away_team", "N/A")
+            home_prob = float(result.get("home_win_probability", 0))
+            away_prob = float(result.get("away_win_probability", 0))
+            handicap_analysis = result.get("handicap_analysis", "N/A")
+
+            if home_prob > 60:
+                recommendations.append({
+                    "team": home_team,
+                    "type": "Home Win",
+                    "reason": f"{home_team} has a high win probability of {home_prob:.2f}%."
+                })
+            if away_prob > 60:
+                recommendations.append({
+                    "team": away_team,
+                    "type": "Away Win",
+                    "reason": f"{away_team} has a high win probability of {away_prob:.2f}%."
+                })
+            if "Bet on Home" in handicap_analysis:
+                recommendations.append({
+                    "team": home_team,
+                    "type": "Handicap Bet",
+                    "reason": "Handicap analysis favors the home team."
+                })
+            if "Bet on Away" in handicap_analysis:
+                recommendations.append({
+                    "team": away_team,
+                    "type": "Handicap Bet",
+                    "reason": "Handicap analysis favors the away team."
+                })
+        except Exception as e:
+            print(f"Error generating recommendation for match {home_team} vs {away_team}: {e}")
+    return recommendations
+
 
 def analyze_handicap_outcome(home_probability, away_probability, handicap, odds):
     """
-    Analyze the handicap and recommend which side to bet on based on probabilities and odds.
+    Analyze the handicap and recommend which side to bet on.
     """
     try:
-        # ตรวจสอบว่ามีค่า handicap และ odds หรือไม่
         if not handicap or odds is None:
             return {
                 "handicap": handicap or "N/A",
                 "odds": odds or "N/A",
                 "recommendation": "Insufficient data for analysis"
             }
-        
-        # Parse handicap value
-        handicap_value = float(handicap.split()[1]) if handicap and handicap.split() else 0
-        implied_probability = 100 / float(odds) if odds else 0
+        handicap_value = float(handicap.split()[1]) if handicap.split() else 0
 
-        # Determine which team has a higher chance of covering the handicap
-        if handicap_value < 0:  # Handicap favors the home team
-            if home_probability - abs(handicap_value * 10) > away_probability:
-                recommendation = "Bet on Home"
-            else:
-                recommendation = "Avoid betting on Home"
-        else:  # Handicap favors the away team
-            if away_probability - handicap_value * 10 > home_probability:
-                recommendation = "Bet on Away"
-            else:
-                recommendation = "Avoid betting on Away"
+        if handicap_value < 0:
+            recommendation = "Bet on Home" if home_probability > away_probability else "Avoid betting on Home"
+        else:
+            recommendation = "Bet on Away" if away_probability > home_probability else "Avoid betting on Away"
 
         return {
             "handicap": handicap,
             "odds": odds,
-            "implied_probability": round(implied_probability, 2),
             "recommendation": recommendation
         }
     except Exception as e:
@@ -143,6 +206,7 @@ def analyze_handicap_outcome(home_probability, away_probability, handicap, odds)
             "odds": odds,
             "recommendation": "Analysis failed"
         }
+
 
 def generate_analysis_reason(home_prob, away_prob, home_rank, away_rank, home_form, away_form):
     """
@@ -154,11 +218,10 @@ def generate_analysis_reason(home_prob, away_prob, home_rank, away_rank, home_fo
     else:
         reason.append(f"The away team is favored with a {away_prob:.2f}% win probability.")
 
-    if isinstance(home_rank, int) and isinstance(away_rank, int):
-        if home_rank < away_rank:
-            reason.append(f"The home team is ranked higher ({home_rank}) compared to the away team ({away_rank}).")
-        else:
-            reason.append(f"The away team is ranked higher ({away_rank}) compared to the home team ({home_rank}).")
+    if home_rank < away_rank:
+        reason.append(f"The home team is ranked higher ({home_rank}) compared to the away team ({away_rank}).")
+    else:
+        reason.append(f"The away team is ranked higher ({away_rank}) compared to the home team ({home_rank}).")
 
     if home_form:
         reason.append(f"The home team's recent form is {home_form}.")
