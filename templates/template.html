@@ -23,14 +23,14 @@
             <p><strong>เหตุผล:</strong> {{ top_team.reason }}</p>
             <p><strong>แฮนดิแคป:</strong> {{ top_team.odds }}</p>
         </div>
-            <!-- Example Button -->
-    <div style="text-align: center; margin-top: 20px;">
-        <button>ดูรายละเอียดเพิ่มเติม</button>
+        <div style="text-align: center; margin-top: 20px;">
+            <button>ดูรายละเอียดเพิ่มเติม</button>
+        </div>
     </section>
 
     <!-- Top Performing Teams -->
     <section id="top-performing-teams">
-        <h2 class="section-title gradient-text">ทีมที่มีผลงานยอดเยี่ยม</h2>
+        <h2 class="section-title gradient-text">ผลงานยอดเยี่ยมในสัปดาห์ที่ผ่านมา</h2>
         <div class="table-container">
             <table>
                 <thead>
@@ -51,14 +51,14 @@
                 </tbody>
             </table>
         </div>
-            <!-- Example Button -->
-    <div style="text-align: center; margin-top: 20px;">
-        <button>ดูรายละเอียดเพิ่มเติม</button>
+        <div style="text-align: center; margin-top: 20px;">
+            <button>ดูรายละเอียดเพิ่มเติม</button>
+        </div>
     </section>
 
     <!-- Best Handicap Performers -->
     <section id="best-handicap-performers">
-        <h2 class="section-title gradient-text">ผ่านราคาต่อรองมากสุด</h2>
+        <h2 class="section-title gradient-text">อัตราการผ่านราคาต่อรอง</h2>
         <div class="table-container">
             <table>
                 <thead>
@@ -85,9 +85,88 @@
                 </tbody>
             </table>
         </div>
-            <!-- Example Button -->
-    <div style="text-align: center; margin-top: 20px;">
-        <button>ดูรายละเอียดเพิ่มเติม</button>
+        <div style="text-align: center; margin-top: 20px;">
+            <button>ดูรายละเอียดเพิ่มเติม</button>
+        </div>
+    </section>
+
+    <!-- Fixtures Section -->
+    <section>
+        <h2 class="section-title gradient-text">Premier League Fixtures</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>วันเวลาที่แข่ง</th>
+                        <th>ทีมที่แข่ง</th>
+                        <th>ราคาต่อรอง</th>
+                        <th>ทีมที่ควรเดิมพัน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fixture in fixtures_premier_league %}
+                    <tr>
+                        <td>{{ fixture.fixture.date }}</td>
+                        <td>{{ fixture.teams.home.name }} vs {{ fixture.teams.away.name }}</td>
+                        <td>{{ fixture.odds.handicap }}</td>
+                        <td>{{ fixture.recommendation }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title gradient-text">La Liga Fixtures</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>วันเวลาที่แข่ง</th>
+                        <th>ทีมที่แข่ง</th>
+                        <th>ราคาต่อรอง</th>
+                        <th>ทีมที่ควรเดิมพัน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fixture in fixtures_la_liga %}
+                    <tr>
+                        <td>{{ fixture.fixture.date }}</td>
+                        <td>{{ fixture.teams.home.name }} vs {{ fixture.teams.away.name }}</td>
+                        <td>{{ fixture.odds.handicap }}</td>
+                        <td>{{ fixture.recommendation }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title gradient-text">Serie A Fixtures</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>วันเวลาที่แข่ง</th>
+                        <th>ทีมที่แข่ง</th>
+                        <th>ราคาต่อรอง</th>
+                        <th>ทีมที่ควรเดิมพัน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fixture in fixtures_serie_a %}
+                    <tr>
+                        <td>{{ fixture.fixture.date }}</td>
+                        <td>{{ fixture.teams.home.name }} vs {{ fixture.teams.away.name }}</td>
+                        <td>{{ fixture.odds.handicap }}</td>
+                        <td>{{ fixture.recommendation }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <!-- Footer -->
