@@ -165,46 +165,112 @@ button:hover {
     background: linear-gradient(90deg, #ff9190, #ff7eb3);
 }
 
-/* Card - Top Pick */
+/* Top Pick Card */
 .card.top-pick {
-    background: linear-gradient(145deg, #ff758c, #ff7eb3);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: linear-gradient(145deg, #ff758c, #ff7eb3, #ffa37f);
+    background-size: 400% 400%;
+    animation: gradientMove 8s ease infinite;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     padding: 20px;
     max-width: 600px;
     margin: 20px auto;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #fff;
+    font-family: 'Roboto', 'Arial', sans-serif;
 }
 
-.card.top-pick:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+/* Animation for Gradient Movement */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* Highlight for Top Pick Team Name */
+
+/* Highlighted Team Name in Top Pick */
 .card.top-pick .highlight {
-    font-size: 2rem;
+    font-size: 2.5rem; /* ขยายขนาดฟอนต์ให้เด่นชัด */
+    font-weight: bold; /* เพิ่มความหนา */
+    color: #ffffff; /* สีข้อความ */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้ดูคม */
+    margin-bottom: 10px;
+    letter-spacing: 1px; /* เพิ่มระยะห่างระหว่างตัวอักษร */
+}
+
+/* General Paragraphs in Top Pick */
+.card.top-pick p {
+    font-size: 1.2rem; /* ขนาดฟอนต์ใหญ่ขึ้นเพื่อให้อ่านง่าย */
+    margin: 8px 0;
+    font-weight: 400;
+    color: #ffffff; /* สีข้อความ */
+    letter-spacing: 0.5px; /* เพิ่มระยะห่างตัวอักษร */
+}
+
+/* Button Style */
+.card.top-pick button {
+    background: linear-gradient(90deg, #ff9190, #ff758c);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
     font-weight: bold;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(90deg, #ff9190, #ff7eb3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
 }
 
-/* Add subtle animation */
-.card.top-pick:hover .highlight {
-    animation: pulse 1s infinite;
+.card.top-pick button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    text-align: center;
+    color: #333;
+}
+
+.modal-content h3 {
+    font-size: 1.8rem;
+    color: #ff758c;
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

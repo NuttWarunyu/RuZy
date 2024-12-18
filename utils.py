@@ -37,3 +37,21 @@ def process_handicap_performance(match_history):
     except Exception as e:
         print(f"Error processing handicap performance: {e}")
         return [], 0
+
+def safe_process_results(results):
+    """
+    Process results to ensure serializability.
+    """
+    if not results:
+        return []
+    processed = []
+    for result in results:
+        processed.append({
+            "home": result.get("home", "N/A"),
+            "away": result.get("away", "N/A"),
+            "date": result.get("date", "N/A"),
+            "odds": result.get("odds", "N/A"),
+            "home_win_probability": result.get("home_win_probability", 0),
+            "away_win_probability": result.get("away_win_probability", 0),
+        })
+    return processed

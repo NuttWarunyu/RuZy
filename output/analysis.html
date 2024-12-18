@@ -63,9 +63,17 @@
                 </tbody>
             </table>
         </div>
-        <div style="text-align: center; margin-top: 20px;">
-            <button>ดูรายละเอียดเพิ่มเติม</button>
+        <!-- Modal Popup -->
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modal-team-name">Team Name</h3>
+            <p><strong>โอกาสชนะ:</strong> <span id="modal-win-probability"></span></p>
+            <p><strong>อันดับปัจจุบัน:</strong> <span id="modal-current-standing"></span></p>
+            <p><strong>ข้อมูลเพิ่มเติม:</strong> จะเพิ่มข้อมูลตามที่ต้องการ</p>
         </div>
+    </div>
+</section>
     </section>
 
     <!-- Best Handicap Performers -->
@@ -86,16 +94,16 @@
                     <tr>
                         <td>Aston Villa</td>
                         <td>Premier League</td>
-                        <td>2</td>
+                        <td>3</td>
                         <td>
+                            
+                                <span class="circle red"></span>
+                            
+                                <span class="circle red"></span>
                             
                                 <span class="circle green"></span>
                             
-                                <span class="circle red"></span>
-                            
-                                <span class="circle red"></span>
-                            
-                                <span class="circle red"></span>
+                                <span class="circle green"></span>
                             
                                 <span class="circle green"></span>
                             
@@ -105,18 +113,18 @@
                     <tr>
                         <td>West Ham</td>
                         <td>Premier League</td>
-                        <td>2</td>
+                        <td>3</td>
                         <td>
                             
                                 <span class="circle red"></span>
                             
                                 <span class="circle green"></span>
                             
-                                <span class="circle red"></span>
-                            
-                                <span class="circle red"></span>
+                                <span class="circle green"></span>
                             
                                 <span class="circle green"></span>
+                            
+                                <span class="circle red"></span>
                             
                         </td>
                     </tr>
@@ -124,7 +132,7 @@
                     <tr>
                         <td>Brentford</td>
                         <td>Premier League</td>
-                        <td>2</td>
+                        <td>3</td>
                         <td>
                             
                                 <span class="circle red"></span>
@@ -135,7 +143,7 @@
                             
                                 <span class="circle red"></span>
                             
-                                <span class="circle red"></span>
+                                <span class="circle green"></span>
                             
                         </td>
                     </tr>
@@ -143,25 +151,6 @@
                     <tr>
                         <td>Newcastle</td>
                         <td>Premier League</td>
-                        <td>3</td>
-                        <td>
-                            
-                                <span class="circle green"></span>
-                            
-                                <span class="circle green"></span>
-                            
-                                <span class="circle red"></span>
-                            
-                                <span class="circle green"></span>
-                            
-                                <span class="circle red"></span>
-                            
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Arsenal</td>
-                        <td>Premier League</td>
                         <td>2</td>
                         <td>
                             
@@ -170,6 +159,25 @@
                                 <span class="circle red"></span>
                             
                                 <span class="circle red"></span>
+                            
+                                <span class="circle red"></span>
+                            
+                                <span class="circle green"></span>
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Arsenal</td>
+                        <td>Premier League</td>
+                        <td>4</td>
+                        <td>
+                            
+                                <span class="circle green"></span>
+                            
+                                <span class="circle green"></span>
+                            
+                                <span class="circle green"></span>
                             
                                 <span class="circle green"></span>
                             
@@ -181,10 +189,10 @@
                     <tr>
                         <td>Villarreal</td>
                         <td>La Liga</td>
-                        <td>1</td>
+                        <td>3</td>
                         <td>
                             
-                                <span class="circle red"></span>
+                                <span class="circle green"></span>
                             
                                 <span class="circle green"></span>
                             
@@ -192,7 +200,7 @@
                             
                                 <span class="circle red"></span>
                             
-                                <span class="circle red"></span>
+                                <span class="circle green"></span>
                             
                         </td>
                     </tr>
@@ -207,9 +215,9 @@
                             
                                 <span class="circle green"></span>
                             
-                                <span class="circle red"></span>
-                            
                                 <span class="circle green"></span>
+                            
+                                <span class="circle red"></span>
                             
                                 <span class="circle red"></span>
                             
@@ -219,16 +227,16 @@
                     <tr>
                         <td>AC Milan</td>
                         <td>Serie A</td>
-                        <td>1</td>
+                        <td>4</td>
                         <td>
-                            
-                                <span class="circle red"></span>
                             
                                 <span class="circle green"></span>
                             
-                                <span class="circle red"></span>
+                                <span class="circle green"></span>
                             
-                                <span class="circle red"></span>
+                                <span class="circle green"></span>
+                            
+                                <span class="circle green"></span>
                             
                                 <span class="circle red"></span>
                             
@@ -258,11 +266,46 @@
                 </thead>
                 <tbody>
                     
+                    <tr>
+                        <td>21-Dec 19:30</td>
+                        <td>Aston Villa vs Manchester City</td>
+                        <td>Home -0.25</td>
+                        <td>Avoid betting on Home</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>21-Dec 22:00</td>
+                        <td>West Ham vs Brighton</td>
+                        <td>Home -0.25</td>
+                        <td>Avoid betting on Home</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>21-Dec 22:00</td>
+                        <td>Brentford vs Nottingham Forest</td>
+                        <td>Home -1</td>
+                        <td>Avoid betting on Home</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>21-Dec 22:00</td>
+                        <td>Ipswich vs Newcastle</td>
+                        <td>Home +0.25</td>
+                        <td>Bet on Away</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>22-Dec 00:30</td>
+                        <td>Crystal Palace vs Arsenal</td>
+                        <td>Home +0.5</td>
+                        <td>Bet on Away</td>
+                    </tr>
+                    
                 </tbody>
             </table>
         </div>
     </section>
-
+    
     <section>
         <h2 class="section-title gradient-text">La Liga Fixtures</h2>
         <div class="table-container">
@@ -277,11 +320,25 @@
                 </thead>
                 <tbody>
                     
+                    <tr>
+                        <td>19-Dec 03:30</td>
+                        <td>Villarreal vs Rayo Vallecano</td>
+                        <td>Home -1.25</td>
+                        <td>Bet on Home</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>19-Dec 03:30</td>
+                        <td>Espanyol vs Valencia</td>
+                        <td>Home -0.5</td>
+                        <td>Bet on Home</td>
+                    </tr>
+                    
                 </tbody>
             </table>
         </div>
     </section>
-
+    
     <section>
         <h2 class="section-title gradient-text">Serie A Fixtures</h2>
         <div class="table-container">
@@ -296,14 +353,43 @@
                 </thead>
                 <tbody>
                     
+                    <tr>
+                        <td>21-Dec 02:45</td>
+                        <td>Verona vs AC Milan</td>
+                        <td>Home +0.5</td>
+                        <td>Bet on Away</td>
+                    </tr>
+                    
                 </tbody>
             </table>
         </div>
     </section>
+    
+    
+
+    <!-- Debug Section -->
+    <section id="debug">
+        <h2>Debug Data</h2>
+        <pre>
+            Premier League Fixtures: [{'league': 'Premier League', 'home_team': 'Aston Villa', 'away_team': 'Manchester City', 'home_form': 'WLWWWDDWDLLDLWWL', 'away_form': 'WWWWDDWWWLLLLWDL', 'home_win_probability': 46.67, 'away_win_probability': 53.33, 'win_probability': 'Home: 46.67% / Away: 53.33%', 'handicap_analysis': 'Avoid betting on Home', 'reason': "The away team is favored with a 53.33% win probability. The away team is ranked higher (5) compared to the home team (7). The home team's recent form is WLWWWDDWDLLDLWWL. The away team's recent form is WWWWDDWWWLLLLWDL.", 'current_standing': 'Home Rank: 7, Away Rank: 5', 'handicap_performance': ['green', 'green', 'red', 'green', 'red'], 'loss_performance': ['red', 'red', 'green', 'red', 'green'], 'match_date': '21-Dec 19:30', 'handicap': 'Home -0.25', 'odd': '2.89', 'handicap_success_count': 3, 'loss_count': 3, 'selected_team': 'Manchester City'}, {'league': 'Premier League', 'home_team': 'West Ham', 'away_team': 'Brighton', 'home_form': 'LWLDLDWLWLDWLLWD', 'away_form': 'WWDDDLWWDLWWDLDL', 'home_win_probability': 45.45, 'away_win_probability': 54.55, 'win_probability': 'Home: 45.45% / Away: 54.55%', 'handicap_analysis': 'Avoid betting on Home', 'reason': "The away team is favored with a 54.55% win probability. The away team is ranked higher (9) compared to the home team (14). The home team's recent form is LWLDLDWLWLDWLLWD. The away team's recent form is WWDDDLWWDLWWDLDL.", 'current_standing': 'Home Rank: 14, Away Rank: 9', 'handicap_performance': ['green', 'green', 'red', 'green', 'red'], 'loss_performance': ['red', 'red', 'green', 'red', 'green'], 'match_date': '21-Dec 22:00', 'handicap': 'Home -0.25', 'odd': '2.45', 'handicap_success_count': 3, 'loss_count': 3, 'selected_team': 'Brighton'}, {'league': 'Premier League', 'home_team': 'Brentford', 'away_team': 'Nottingham Forest', 'home_form': 'WLWLLDWLWLWDWLWL', 'away_form': 'DWDWDLDWWWLLWLWW', 'home_win_probability': 46.67, 'away_win_probability': 53.33, 'win_probability': 'Home: 46.67% / Away: 53.33%', 'handicap_analysis': 'Avoid betting on Home', 'reason': "The away team is favored with a 53.33% win probability. The away team is ranked higher (4) compared to the home team (11). The home team's recent form is WLWLLDWLWLWDWLWL. The away team's recent form is DWDWDLDWWWLLWLWW.", 'current_standing': 'Home Rank: 11, Away Rank: 4', 'handicap_performance': ['green', 'green', 'red', 'green', 'red'], 'loss_performance': ['red', 'red', 'green', 'red', 'green'], 'match_date': '21-Dec 22:00', 'handicap': 'Home -1', 'odd': '2.89', 'handicap_success_count': 3, 'loss_count': 3, 'selected_team': 'Nottingham Forest'}, {'league': 'Premier League', 'home_team': 'Ipswich', 'away_team': 'Newcastle', 'home_form': 'LLDDDDLLLDWDLLLW', 'away_form': 'WDWWLDDLLWWLDDLW', 'home_win_probability': 25.0, 'away_win_probability': 75.0, 'win_probability': 'Home: 25.0% / Away: 75.0%', 'handicap_analysis': 'Bet on Away', 'reason': "The away team is favored with a 75.00% win probability. The away team is ranked higher (12) compared to the home team (18). The home team's recent form is LLDDDDLLLDWDLLLW. The away team's recent form is WDWWLDDLLWWLDDLW.", 'current_standing': 'Home Rank: 18, Away Rank: 12', 'handicap_performance': ['green', 'green', 'red', 'green', 'red'], 'loss_performance': ['red', 'red', 'green', 'red', 'green'], 'match_date': '21-Dec 22:00', 'handicap': 'Home +0.25', 'odd': '2.58', 'handicap_success_count': 3, 'loss_count': 3}, {'league': 'Premier League', 'home_team': 'Crystal Palace', 'away_team': 'Arsenal', 'home_form': 'LLDDDLLLWDLDDWDW', 'away_form': 'WWDWDWWLDLDWWWDD', 'home_win_probability': 27.27, 'away_win_probability': 72.73, 'win_probability': 'Home: 27.27% / Away: 72.73%', 'handicap_analysis': 'Bet on Away', 'reason': "The away team is favored with a 72.73% win probability. The away team is ranked higher (3) compared to the home team (15). The home team's recent form is LLDDDLLLWDLDDWDW. The away team's recent form is WWDWDWWLDLDWWWDD.", 'current_standing': 'Home Rank: 15, Away Rank: 3', 'handicap_performance': ['green', 'green', 'red', 'green', 'red'], 'loss_performance': ['red', 'red', 'green', 'red', 'green'], 'match_date': '22-Dec 00:30', 'handicap': 'Home +0.5', 'odd': '2.36', 'handicap_success_count': 3, 'loss_count': 3}]
+        </pre>
+        <pre>
+            La Liga Fixtures: [{'league': 'La Liga', 'home_team': 'Villarreal', 'away_team': 'Rayo Vallecano', 'home_form': 'DWWDWLWWLDWWDDLL', 'away_form': 'WDLLWDDDWLWLLLWD', 'home_win_probability': 58.33, 'away_win_probability': 41.67, 'win_probability': 'Home: 58.33% / Away: 41.67%', 'handicap_analysis': 'Bet on Home', 'reason': "The home team is favored with a 58.33% win probability. The home team is ranked higher (6) compared to the away team (13). The home team's recent form is DWWDWLWWLDWWDDLL. The away team's recent form is WDLLWDDDWLWLLLWD.", 'current_standing': 'Home Rank: 6, Away Rank: 13', 'handicap_performance': ['green', 'green', 'red', 'green', 'red'], 'loss_performance': ['red', 'red', 'green', 'red', 'green'], 'match_date': '19-Dec 03:30', 'handicap': 'Home -1.25', 'odd': '2.90', 'handicap_success_count': 3, 'loss_count': 3}, {'league': 'La Liga', 'home_team': 'Espanyol', 'away_team': 'Valencia', 'home_form': 'LLDWWLLLWLLLLWLD', 'away_form': 'LLLDLWDLDLDWLLL', 'home_win_probability': 65.22, 'away_win_probability': 34.78, 'win_probability': 'Home: 65.22% / Away: 34.78%', 'handicap_analysis': 'Bet on Home', 'reason': "The home team is favored with a 65.22% win probability. The home team is ranked higher (18) compared to the away team (20). The home team's recent form is LLDWWLLLWLLLLWLD. The away team's recent form is LLLDLWDLDLDWLLL.", 'current_standing': 'Home Rank: 18, Away Rank: 20', 'handicap_performance': ['green', 'green', 'red', 'green', 'red'], 'loss_performance': ['red', 'red', 'green', 'red', 'green'], 'match_date': '19-Dec 03:30', 'handicap': 'Home -0.5', 'odd': '2.60', 'handicap_success_count': 3, 'loss_count': 3}]
+        </pre>
+        <pre>
+            Serie A Fixtures: [{'league': 'Serie A', 'home_team': 'Verona', 'away_team': 'AC Milan', 'home_form': 'WLWLLLWLLLWLLLLW', 'away_form': 'DLDWWWLWLWDDWLD', 'home_win_probability': 43.86, 'away_win_probability': 56.14, 'win_probability': 'Home: 43.86% / Away: 56.14%', 'handicap_analysis': 'Bet on Away', 'reason': "The away team is favored with a 56.14% win probability. The away team is ranked higher (8) compared to the home team (17). The home team's recent form is WLWLLLWLLLWLLLLW. The away team's recent form is DLDWWWLWLWDDWLD.", 'current_standing': 'Home Rank: 17, Away Rank: 8', 'handicap_performance': ['green', 'green', 'red', 'green', 'red'], 'loss_performance': ['red', 'red', 'green', 'red', 'green'], 'match_date': '21-Dec 02:45', 'handicap': 'Home +0.5', 'odd': '2.40', 'handicap_success_count': 3, 'loss_count': 3}]
+        </pre>
+    </section>
+
+
 
     <!-- Footer -->
     <footer class="footer">
         © 2024 <span class="gradient-text">ทีเด็ดฟุตบอล.Ai</span> | วิเคราะห์การแข่งขันฟุตบอลอย่างมืออาชีพ
     </footer>
+
+    <script src="/static/js/modal.js"></script>
+
+
 </body>
 </html>

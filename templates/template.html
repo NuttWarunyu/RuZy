@@ -51,9 +51,17 @@
                 </tbody>
             </table>
         </div>
-        <div style="text-align: center; margin-top: 20px;">
-            <button>ดูรายละเอียดเพิ่มเติม</button>
+        <!-- Modal Popup -->
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modal-team-name">Team Name</h3>
+            <p><strong>โอกาสชนะ:</strong> <span id="modal-win-probability"></span></p>
+            <p><strong>อันดับปัจจุบัน:</strong> <span id="modal-current-standing"></span></p>
+            <p><strong>ข้อมูลเพิ่มเติม:</strong> จะเพิ่มข้อมูลตามที่ต้องการ</p>
         </div>
+    </div>
+</section>
     </section>
 
     <!-- Best Handicap Performers -->
@@ -106,17 +114,17 @@
                 <tbody>
                     {% for fixture in fixtures_premier_league %}
                     <tr>
-                        <td>{{ fixture.fixture.date }}</td>
-                        <td>{{ fixture.teams.home.name }} vs {{ fixture.teams.away.name }}</td>
-                        <td>{{ fixture.odds.handicap }}</td>
-                        <td>{{ fixture.recommendation }}</td>
+                        <td>{{ fixture.match_date }}</td>
+                        <td>{{ fixture.home_team }} vs {{ fixture.away_team }}</td>
+                        <td>{{ fixture.handicap }}</td>
+                        <td>{{ fixture.handicap_analysis }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </section>
-
+    
     <section>
         <h2 class="section-title gradient-text">La Liga Fixtures</h2>
         <div class="table-container">
@@ -132,17 +140,17 @@
                 <tbody>
                     {% for fixture in fixtures_la_liga %}
                     <tr>
-                        <td>{{ fixture.fixture.date }}</td>
-                        <td>{{ fixture.teams.home.name }} vs {{ fixture.teams.away.name }}</td>
-                        <td>{{ fixture.odds.handicap }}</td>
-                        <td>{{ fixture.recommendation }}</td>
+                        <td>{{ fixture.match_date }}</td>
+                        <td>{{ fixture.home_team }} vs {{ fixture.away_team }}</td>
+                        <td>{{ fixture.handicap }}</td>
+                        <td>{{ fixture.handicap_analysis }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </section>
-
+    
     <section>
         <h2 class="section-title gradient-text">Serie A Fixtures</h2>
         <div class="table-container">
@@ -158,20 +166,42 @@
                 <tbody>
                     {% for fixture in fixtures_serie_a %}
                     <tr>
-                        <td>{{ fixture.fixture.date }}</td>
-                        <td>{{ fixture.teams.home.name }} vs {{ fixture.teams.away.name }}</td>
-                        <td>{{ fixture.odds.handicap }}</td>
-                        <td>{{ fixture.recommendation }}</td>
+                        <td>{{ fixture.match_date }}</td>
+                        <td>{{ fixture.home_team }} vs {{ fixture.away_team }}</td>
+                        <td>{{ fixture.handicap }}</td>
+                        <td>{{ fixture.handicap_analysis }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </section>
+    
+    
+
+    <!-- Debug Section -->
+    <section id="debug">
+        <h2>Debug Data</h2>
+        <pre>
+            Premier League Fixtures: {{ fixtures_premier_league | safe }}
+        </pre>
+        <pre>
+            La Liga Fixtures: {{ fixtures_la_liga | safe }}
+        </pre>
+        <pre>
+            Serie A Fixtures: {{ fixtures_serie_a | safe }}
+        </pre>
+    </section>
+
+
 
     <!-- Footer -->
     <footer class="footer">
         © 2024 <span class="gradient-text">ทีเด็ดฟุตบอล.Ai</span> | วิเคราะห์การแข่งขันฟุตบอลอย่างมืออาชีพ
     </footer>
+
+    <script src="/static/js/modal.js"></script>
+
+
 </body>
 </html>

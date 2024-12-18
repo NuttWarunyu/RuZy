@@ -1,5 +1,4 @@
 from flask import Flask, send_file
-from flask_caching import Cache
 from data_fetcher import (
     fetch_fixtures,
     fetch_standings,
@@ -32,12 +31,6 @@ CURRENT_SEASON = 2024
 
 # Flask app initialization
 app = Flask(__name__)
-
-# Setup Flask-Caching
-cache = Cache(app, config={
-    "CACHE_TYPE": "SimpleCache",
-    "CACHE_DEFAULT_TIMEOUT": 600  # Cache timeout in seconds (10 minutes)
-})
 
 def analyze_fixtures(fixtures, standings, league_id, league_name):
     """
@@ -94,7 +87,6 @@ def analyze_fixtures(fixtures, standings, league_id, league_name):
     return analysis_results, betting_recommendations
 
 @app.route("/")
-@cache.cached()
 def index():
     """
     Main route to fetch data, analyze fixtures, and return the HTML report.
@@ -102,10 +94,8 @@ def index():
     try:
         # Fetch Premier League data
         logging.info("Fetching Premier League fixtures...")
-        fixtures_premier_league = cache.get("fixtures_premier_league") or fetch_fixtures(API_KEY, PREMIER_LEAGUE_ID, CURRENT_SEASON)
-        standings_premier_league = cache.get("standings_premier_league") or fetch_standings(API_KEY, PREMIER_LEAGUE_ID, CURRENT_SEASON)
-        cache.set("fixtures_premier_league", fixtures_premier_league)
-        cache.set("standings_premier_league", standings_premier_league)
+        fixtures_premier_league = fetch_fixtures(API_KEY, PREMIER_LEAGUE_ID, CURRENT_SEASON)
+        standings_premier_league = fetch_standings(API_KEY, PREMIER_LEAGUE_ID, CURRENT_SEASON)
 
         analysis_results_premier_league, betting_recommendations_premier_league = analyze_fixtures(
             fixtures_premier_league,
@@ -115,11 +105,8 @@ def index():
         )
 
         # Fetch La Liga data
-        logging.info("Fetching La Liga fixtures...")
-        fixtures_la_liga = cache.get("fixtures_la_liga") or fetch_fixtures(API_KEY, LA_LIGA_ID, CURRENT_SEASON)
-        standings_la_liga = cache.get("standings_la_liga") or fetch_standings(API_KEY, LA_LIGA_ID, CURRENT_SEASON)
-        cache.set("fixtures_la_liga", fixtures_la_liga)
-        cache.set("standings_la_liga", standings_la_liga)
+        fixtures_la_liga = fetch_fixtures(API_KEY, LA_LIGA_ID, CURRENT_SEASON)
+        standings_la_liga = fetch_standings(API_KEY, LA_LIGA_ID, CURRENT_SEASON)
 
         analysis_results_la_liga, betting_recommendations_la_liga = analyze_fixtures(
             fixtures_la_liga,
@@ -129,11 +116,8 @@ def index():
         )
 
         # Fetch Serie A data
-        logging.info("Fetching Serie A fixtures...")
-        fixtures_serie_a = cache.get("fixtures_serie_a") or fetch_fixtures(API_KEY, SERIE_A_ID, CURRENT_SEASON)
-        standings_serie_a = cache.get("standings_serie_a") or fetch_standings(API_KEY, SERIE_A_ID, CURRENT_SEASON)
-        cache.set("fixtures_serie_a", fixtures_serie_a)
-        cache.set("standings_serie_a", standings_serie_a)
+        fixtures_serie_a = fetch_fixtures(API_KEY, SERIE_A_ID, CURRENT_SEASON)
+        standings_serie_a = fetch_standings(API_KEY, SERIE_A_ID, CURRENT_SEASON)
 
         analysis_results_serie_a, betting_recommendations_serie_a = analyze_fixtures(
             fixtures_serie_a,
@@ -145,11 +129,10 @@ def index():
         # Combine analysis results for all leagues
         all_analysis_results = analysis_results_premier_league + analysis_results_la_liga + analysis_results_serie_a
 
-        # คำนวณตารางเพิ่มเติม
+        # Calculate additional tables
         top_form_teams = calculate_top_form_teams(all_analysis_results, top_n=3)
         top_handicap_teams = calculate_top_handicap_teams(all_analysis_results, top_n=5)
         losing_teams = calculate_losing_teams(all_analysis_results, top_n=5)
-
 
         # Generate HTML report
         output_file = os.path.join(os.getcwd(), "output", "analysis.html")

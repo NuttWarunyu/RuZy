@@ -84,6 +84,10 @@ def process_top_form_teams(top_form_teams):
 def generate_html(results, la_liga_results, serie_a_results, betting_recommendations=None,
                   live_matches=None, top_form_teams=None, top_handicap_teams=None, losing_teams=None,
                   output_file="analysis.html"):
+    # Debug Fixtures
+    print("Premier League Fixtures:", results)
+    print("La Liga Fixtures:", la_liga_results)
+    print("Serie A Fixtures:", serie_a_results)
 
     # รวมผลลัพธ์จากทุกลีก
     combined_results = combine_league_results(results, la_liga_results, serie_a_results)
@@ -106,7 +110,10 @@ def generate_html(results, la_liga_results, serie_a_results, betting_recommendat
             )
         )
         top_team = {
-            "team_name": top_team_data.get("home_team") if float(top_team_data.get("home_win_probability", 0)) > float(top_team_data.get("away_win_probability", 0)) else top_team_data.get("away_team"),
+            "team_name": top_team_data.get("home_team")
+            if float(top_team_data.get("home_win_probability", 0))
+            > float(top_team_data.get("away_win_probability", 0))
+            else top_team_data.get("away_team"),
             "league": top_team_data.get("league", "ไม่พบข้อมูล"),
             "probability": f"{max(float(top_team_data.get('home_win_probability', 0)), float(top_team_data.get('away_win_probability', 0))):.2f}%",
             "odds": top_team_data.get("handicap", "N/A"),
@@ -127,6 +134,9 @@ def generate_html(results, la_liga_results, serie_a_results, betting_recommendat
 
         # Render HTML with context
         html_content = template.render(
+            fixtures_premier_league=results,
+            fixtures_la_liga=la_liga_results,
+            fixtures_serie_a=serie_a_results,
             top_team=top_team,
             top_form_teams=top_form_teams,
             top_handicap_teams=top_handicap_teams
