@@ -274,3 +274,38 @@ button:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
+.gradient-text {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ai-banner {
+    background: #ffffff; /* สีพื้นหลังขาว */
+    color: #333333; /* สีข้อความเข้ม */
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto; /* จัดให้อยู่ตรงกลางหน้าจอ */
+    max-width: 800px; /* ความกว้างสูงสุด */
+    text-align: center; /* ข้อความอยู่กลาง */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+#why-trust-us {
+    text-align: center; /* จัดเนื้อหาให้อยู่ตรงกลาง */
+    margin: 40px auto; /* เว้นระยะรอบนอก */
+    max-width: 800px; /* จำกัดความกว้าง */
+}
+
+.trust-list {
+    list-style-type: none; /* เอาจุดหน้ารายการออก */
+    padding: 0;
+}
+
+.trust-list li {
+    margin: 10px 0;
+    font-size: 1.2em; /* ขนาดตัวอักษรใหญ่ขึ้น */
+}
