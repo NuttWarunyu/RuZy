@@ -214,6 +214,69 @@
     }
 </style>
 
+<!-- Flashing Odds Section -->
+<section id="flashing-odds">
+    <h2 class="section-title gradient-text">🔥 ราคาต่อรองอัพเดทสด 🔥</h2>
+    <div class="odds-container">
+        <p class="odds-item">แมนฯ ซิตี้ vs ลิเวอร์พูล: <span class="flash">1.75</span></p>
+        <p class="odds-item">อาร์เซนอล vs เชลซี: <span class="flash">2.30</span></p>
+        <p class="odds-item">แมนฯ ยูไนเต็ด vs สเปอร์ส: <span class="flash">1.95</span></p>
+    </div>
+</section>
+
+<!-- Style for Flashing Odds -->
+<style>
+    #flashing-odds {
+        text-align: center;
+        margin: 30px auto;
+        padding: 15px;
+        background: linear-gradient(145deg, #333, #2a2a2a);
+        color: #fff;
+        border-radius: 10px;
+        max-width: 600px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .odds-item {
+        font-size: 1.2rem;
+        margin: 10px 0;
+    }
+
+    /* Flashing effect */
+    .flash {
+        font-weight: bold;
+        animation: flash 1s ease-in-out infinite alternate;
+        color: #ffb347; /* สีเริ่มต้น */
+    }
+
+    @keyframes flash {
+        0% {
+            color: #ffb347;
+        }
+        50% {
+            color: #ff4500;
+        }
+        100% {
+            color: #ffb347;
+        }
+    }
+</style>
+
+<!-- Script for Updating Odds Dynamically -->
+<script>
+    const oddsElements = document.querySelectorAll(".flash");
+
+    function updateOdds() {
+        oddsElements.forEach((el) => {
+            const newOdds = (Math.random() * (3.5 - 1.2) + 1.2).toFixed(2); // Random odds between 1.2 and 3.5
+            el.textContent = newOdds;
+        });
+    }
+
+    // Update odds every 3 seconds
+    setInterval(updateOdds, 3000);
+</script>
+
     <!-- Top Performing Teams -->
     <section id="top-performing-teams">
         <h2 class="section-title gradient-text">“Place Your Bets – Guaranteed Hits This Week!”</h2>

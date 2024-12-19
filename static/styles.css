@@ -344,6 +344,7 @@ button:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 /* สไตล์สำหรับหัวข้อตาราง (TH) */
 th {
     background: linear-gradient(90deg, #ff758c, #ff7eb3); /* ไล่โทนชมพู */
