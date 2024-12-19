@@ -13,7 +13,6 @@
     ⚽ <span class="gradient-text">ทีเด็ดฟุตบอล.Ai</span> - การวิเคราะห์การแข่งขันฟุตบอล
 </header>
 
-
 <!-- AI Advertisement Section -->
 <section id="ai-technology">
     <div class="ai-section">
@@ -214,15 +213,110 @@
     }
 </style>
 
-<!-- Flashing Odds Section -->
-<section id="flashing-odds">
-    <h2 class="section-title gradient-text">🔥 ราคาต่อรองอัพเดทสด 🔥</h2>
-    <div class="odds-container">
-        <p class="odds-item">แมนฯ ซิตี้ vs ลิเวอร์พูล: <span class="flash">1.75</span></p>
-        <p class="odds-item">อาร์เซนอล vs เชลซี: <span class="flash">2.30</span></p>
-        <p class="odds-item">แมนฯ ยูไนเต็ด vs สเปอร์ส: <span class="flash">1.95</span></p>
+<!-- Live Analysis Section -->
+<section id="live-analysis">
+    <h2 class="section-title gradient-text">🎙️ ฟังวิเคราะห์รายการสด 21.00 น. 🎧</h2>
+    <div class="live-container">
+        <p class="live-description">
+            ติดตามการวิเคราะห์ราคาต่อรองและทีเด็ดฟุตบอลสดโดยทีมงานทีเด็ด! 
+        </p>
+        <button class="live-button" onclick="window.location.href='/live-stream'">เข้าฟังสด</button>
+        <div class="live-animation">
+            <div class="equalizer-bar"></div>
+            <div class="equalizer-bar"></div>
+            <div class="equalizer-bar"></div>
+            <div class="equalizer-bar"></div>
+        </div>
     </div>
 </section>
+
+<!-- Style for Live Analysis -->
+<style>
+    #live-analysis {
+        text-align: center;
+        margin: 40px auto;
+        padding: 20px;
+        background: linear-gradient(145deg, #2f2f2f, #434343);
+        color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+    }
+
+    #live-analysis .section-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: #ff758c;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .live-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .live-description {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin: 10px 0;
+    }
+
+    .live-button {
+        background: linear-gradient(90deg, #ff758c, #ff7eb3);
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .live-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .live-animation {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 5px;
+        height: 50px;
+        margin-top: 20px;
+    }
+
+    .equalizer-bar {
+        width: 10px;
+        height: 30px;
+        background: linear-gradient(90deg, #56ab2f, #a8e063);
+        animation: bounce 1.2s infinite ease-in-out;
+    }
+
+    .equalizer-bar:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .equalizer-bar:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    .equalizer-bar:nth-child(4) {
+        animation-delay: 0.6s;
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: scaleY(1);
+        }
+        50% {
+            transform: scaleY(1.5);
+        }
+    }
+</style>
 
 <!-- Style for Flashing Odds -->
 <style>
@@ -393,17 +487,7 @@
         </div>
     </section>
 
-    <script>
-        function showPredictionDetails(date, team, result) {
-            const detailsText = `ทีมที่ทาย: ${team}\nสถานะ: ${result}\nวันที่: ${date}`;
-            document.getElementById('details-text').innerText = detailsText;
-            document.getElementById('prediction-details').classList.remove('hidden');
-        }
-    
-        function closeDetails() {
-            document.getElementById('prediction-details').classList.add('hidden');
-        }
-    </script>
+
     
 <!-- Contact Section -->
 <section id="contact-us">
