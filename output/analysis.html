@@ -94,6 +94,64 @@
     </div>
 </section>
 
+
+<!-- Ad Section -->
+<div id="ad-placeholder" class="ad-slot">
+    <div class="ad-content">
+        <h2>🌟 Experience Premium Betting with Bwin 🌟</h2>
+        <p>Your ultimate football betting platform!</p>
+    </div>
+</div>
+
+<!-- CSS -->
+<style>
+    .ad-slot {
+        width: 100%;
+        height: 250px;
+        margin: 20px auto;
+        background: url('/static/images/ad_background.jpg') center/cover no-repeat;
+        color: #fff;
+        text-align: center;
+        font-size: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .ad-slot::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* ช่วยเพิ่มความชัดเจนให้ข้อความ */
+        border-radius: 10px;
+        z-index: 1;
+    }
+
+    .ad-content {
+        position: relative;
+        z-index: 2; /* ทำให้ข้อความอยู่เหนือพื้นหลัง */
+    }
+
+    .ad-content h2 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 0;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .ad-content p {
+        font-size: 1.2rem;
+        margin: 10px 0 0;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+</style>
+
  <!-- การทำงานของ ai -->
 <div id="ai-workflow">
     <h2>⚙️ การทำงานของ AI</h2>
@@ -324,6 +382,51 @@
         }
     </script>
     
+<!-- Contact Section -->
+<section id="contact-us">
+    <h3 class="section-title gradient-text">ติดต่อเรา</h3>
+    <div class="contact-card">
+        <p><strong>📧 อีเมล:</strong> contact@tdeedfootball.ai</p>
+        <p><strong>📱 โทร:</strong> 081-234-5678</p>
+        <p><strong>💬 LINE:</strong> @tdeedfootball</p>
+        <p><strong>🌐 Facebook:</strong> <a href="https://facebook.com/tdeedfootball" target="_blank">ทีเด็ดฟุตบอล.Ai</a></p>
+    </div>
+</section>
+
+<!-- Style for Contact Section -->
+<style>
+    #contact-us {
+        text-align: center;
+        margin: 20px auto;
+        padding: 15px;
+        max-width: 400px;
+        background: #2f2f2f;
+        color: #ddd;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        font-size: 0.9rem;
+    }
+
+    #contact-us h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #ff7eb3;
+    }
+
+    .contact-card {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .contact-card a {
+        color: #ff91a4;
+        text-decoration: none;
+    }
+
+    .contact-card a:hover {
+        text-decoration: underline;
+    }
+</style>
 
     <!-- Footer -->
     <footer class="footer">
