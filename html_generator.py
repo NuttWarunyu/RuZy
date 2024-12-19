@@ -82,7 +82,7 @@ def process_top_form_teams(top_form_teams):
     return top_form_teams
 
 def generate_html(results, la_liga_results, serie_a_results, betting_recommendations=None,
-                  live_matches=None, top_form_teams=None, top_handicap_teams=None, losing_teams=None,
+                  live_matches=None, top_form_teams=None, top_handicap_teams=None, losing_teams=None,prediction_history=None,
                   output_file="analysis.html"):
     # Debug Fixtures
     print("Premier League Fixtures:", results)
@@ -139,7 +139,8 @@ def generate_html(results, la_liga_results, serie_a_results, betting_recommendat
             fixtures_serie_a=serie_a_results,
             top_team=top_team,
             top_form_teams=top_form_teams,
-            top_handicap_teams=top_handicap_teams
+            top_handicap_teams=top_handicap_teams,
+            prediction_history=prediction_history 
         )
 
         # Write the output to a file

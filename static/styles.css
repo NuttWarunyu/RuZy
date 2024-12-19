@@ -111,6 +111,70 @@ footer.footer {
     }
 }
 
+/* สัญลักษณ์กลมสีเขียวและสีแดง */
+.circle {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.circle.green {
+    background-color: #28a745; /* สีเขียว */
+}
+
+.circle.red {
+    background-color: #dc3545; /* สีแดง */
+}
+
+/* แถวแสดงผลแบบเรียงเดี่ยว */
+.prediction-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* กล่องแสดงรายละเอียด */
+.prediction-details {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-align: center;
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+.prediction-details.hidden {
+    display: none;
+}
+
+/* วงกลมสถานะ */
+.circle {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.circle.green {
+    background-color: #28a745; /* สีเขียว */
+}
+
+.circle.red {
+    background-color: #dc3545; /* สีแดง */
+}
+
+
+
 /* Apply Animation to Sections */
 section {
     animation: fadeIn 1s ease-in-out;
@@ -280,32 +344,123 @@ button:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+/* สไตล์สำหรับหัวข้อตาราง (TH) */
+th {
+    background: linear-gradient(90deg, #ff758c, #ff7eb3); /* ไล่โทนชมพู */
+    color: #ffffff; /* สีตัวอักษรขาว */
+    font-size: 1.2rem; /* ขนาดตัวอักษรใหญ่ */
+    font-weight: bold; /* ตัวอักษรหนา */
+    text-transform: uppercase; /* ตัวพิมพ์ใหญ่ทั้งหมด */
+    letter-spacing: 1.5px; /* เว้นระยะห่างระหว่างตัวอักษร */
+    padding: 15px; /* ระยะห่างในแต่ละช่อง */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* เพิ่มเงาให้ตัวอักษร */
+    border-bottom: 3px solid #ff4f81; /* เส้นขอบล่างสีชมพูเข้ม */
+    transition: background 0.3s ease; /* เพิ่มเอฟเฟกต์เปลี่ยนสีเมื่อ Hover */
+}
 
-.ai-banner {
-    background: #ffffff; /* สีพื้นหลังขาว */
-    color: #333333; /* สีข้อความเข้ม */
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
+/* เอฟเฟกต์ Hover สำหรับ TH */
+th:hover {
+    background: linear-gradient(90deg, #ff9a9e, #fecfef); /* ไล่โทนชมพูอ่อนเมื่อ Hover */
+    color: #ffe4e9; /* สีอักษรเปลี่ยนเป็นชมพูอ่อน */
+}
+
+/* สไตล์สำหรับประวัติการทายผล */
+#prediction-history {
+    text-align: center;
+    margin: 30px auto;
     padding: 20px;
-    margin: 20px auto; /* จัดให้อยู่ตรงกลางหน้าจอ */
-    max-width: 800px; /* ความกว้างสูงสุด */
-    text-align: center; /* ข้อความอยู่กลาง */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #2e3b4e, #1c2431); /* พื้นหลังไล่สี */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
 }
 
-
-#why-trust-us {
-    text-align: center; /* จัดเนื้อหาให้อยู่ตรงกลาง */
-    margin: 40px auto; /* เว้นระยะรอบนอก */
-    max-width: 800px; /* จำกัดความกว้าง */
+#prediction-history .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff758c; /* ใช้โทนชมพูเด่น */
+    margin-bottom: 20px;
 }
 
-.trust-list {
-    list-style-type: none; /* เอาจุดหน้ารายการออก */
-    padding: 0;
+/* แถวการทายผล */
+.prediction-row {
+    display: flex;
+    flex-wrap: wrap; /* รองรับหน้าจอเล็ก */
+    justify-content: center;
+    gap: 15px; /* ระยะห่างระหว่างวงกลม */
+    padding: 10px;
 }
 
-.trust-list li {
+/* สไตล์สำหรับวงกลม */
+.circle {
+    width: 40px; /* ขนาดวงกลม */
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem; /* ขนาดฟอนต์ในวงกลม */
+    font-weight: bold;
+    color: #fff; /* สีข้อความ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* สีเขียว */
+.circle.green {
+    background: linear-gradient(90deg, #56ab2f, #a8e063); /* ไล่สีเขียว */
+}
+
+/* สีแดง */
+.circle.red {
+    background: linear-gradient(90deg, #cb2d3e, #ef473a); /* ไล่สีแดง */
+}
+
+/* Hover Effect */
+.circle:hover {
+    transform: scale(1.2); /* ขยายเล็กน้อยเมื่อ Hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* เพิ่มเงา */
+}
+
+/* กล่องข้อความแสดงรายละเอียด */
+.prediction-details {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff; /* พื้นหลังขาว */
+    color: #333; /* สีข้อความ */
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.prediction-details p {
+    font-size: 1.2rem;
     margin: 10px 0;
-    font-size: 1.2em; /* ขนาดตัวอักษรใหญ่ขึ้น */
+}
+
+.prediction-details.hidden {
+    display: none;
+}
+
+.prediction-details button {
+    background: linear-gradient(90deg, #ff758c, #ff7eb3); /* ปุ่มโทนชมพู */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.prediction-details button:hover {
+    background: linear-gradient(90deg, #ff9190, #ff7eb3);
+    transform: translateY(-2px);
 }

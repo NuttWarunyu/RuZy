@@ -13,22 +13,51 @@
     ⚽ <span class="gradient-text">ทีเด็ดฟุตบอล.Ai</span> - การวิเคราะห์การแข่งขันฟุตบอล
 </header>
 
+
 <!-- AI Advertisement Section -->
-<section id="ai-advertisement">
-    <div class="ai-banner">
-        <h2 class="gradient-text">🤖 พลังแห่งปัญญาประดิษฐ์ในการวิเคราะห์ฟุตบอล! ⚡</h2>
-        <p>
-            ระบบของเราใช้ <strong>เทคโนโลยี AI ที่ล้ำสมัย</strong> พร้อมด้วย <strong>Machine Learning</strong> 
+<section id="ai-technology">
+    <div class="ai-section">
+        <h2 class="section-title gradient-text">✨ พลัง AI ที่คุณวางใจได้! ✨</h2>
+        <p class="ai-description">
+            ระบบของเราใช้ <strong>เทคโนโลยี AI ที่ล้ำสมัย</strong> ผสานกับ <strong>Machine Learning</strong> 
             ที่เรียนรู้จากข้อมูลการแข่งขันฟุตบอลนับพันเกม เพื่อมอบผลลัพธ์ที่แม่นยำที่สุด!
         </p>
-        <p>
-            ทุกการวิเคราะห์ผ่านการตรวจสอบจากข้อมูลเชิงลึก เช่น <strong>ฟอร์มทีม</strong>, <strong>สถิติการแข่งขัน</strong>, และ <strong>แนวโน้มการเปลี่ยนแปลงราคาต่อรอง</strong>.
+        <p class="ai-details">
+            ทุกการวิเคราะห์ผ่านการตรวจสอบจากข้อมูลเชิงลึก เช่น <strong>ฟอร์มทีม</strong>, <strong>สถิติการแข่งขัน</strong>, 
+            <strong>สภาพนักเตะที่บาดเจ็บ</strong>, และ <strong>แนวโน้มการเปลี่ยนแปลงราคาต่อรอง</strong>.
         </p>
-        <p>
-            สัมผัสประสบการณ์การทำนายที่คุณไว้ใจได้ พร้อมช่วยให้การตัดสินใจของคุณง่ายขึ้น! 💡
+        <p class="ai-experience">
+            สัมผัสประสบการณ์การทำนายที่ครบเครื่องและแม่นยำ พร้อมช่วยให้การตัดสินใจของคุณง่ายขึ้น! 💡
         </p>
     </div>
 </section>
+
+<style>
+    #ai-technology {
+        background: linear-gradient(145deg, #1f1c2c, #928dab);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px auto;
+        max-width: 800px;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .ai-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: #ff7eb3;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    .ai-section p {
+        font-size: 1.2rem;
+        margin: 10px 0;
+        line-height: 1.6;
+    }
+    .ai-section strong {
+        color: #ff758c;
+    }
+</style>
 
 <!-- Top Team to Bet On -->
 <section id="top-team-to-bet">
@@ -42,21 +71,94 @@
     </div>
 </section>
 
-<!-- Why Trust Us Section -->
-<section id="why-trust-us">
-    <h2 class="gradient-text">ทำไมต้องเลือกใช้ <span class="highlight">ทีเด็ดฟุตบอล.Ai</span>?</h2>
-    <ul class="trust-list">
-        <li>💡 วิเคราะห์ด้วย <strong>ข้อมูลจากลีกฟุตบอลทั่วโลก</strong> แบบเรียลไทม์</li>
-        <li>📊 ใช้ <strong>โมเดลคำนวณทางสถิติ</strong> ที่ได้รับการพัฒนาอย่างต่อเนื่อง</li>
-        <li>🔍 ระบบ <strong>AI Learning</strong> ที่พัฒนาขึ้นเฉพาะสำหรับการทำนายผลฟุตบอล</li>
-        <li>⚡ ความแม่นยำและความน่าเชื่อถือสูงสุดในการเลือกทีมที่ดีที่สุด</li>
-    </ul>
+<section id="prediction-history">
+    <h2 class="section-title gradient-text">📅 ประวัติการทายผลย้อนหลัง 10 วัน</h2>
+    <div class="prediction-row">
+        <!-- ข้อมูลตัวอย่าง -->
+        <div class="circle green" onclick="showPredictionDetails('2024-12-10', 'Manchester City', 'ถูก')"></div>
+        <div class="circle red" onclick="showPredictionDetails('2024-12-11', 'Liverpool', 'ผิด')"></div>
+        <div class="circle green" onclick="showPredictionDetails('2024-12-12', 'Arsenal', 'ถูก')"></div>
+        <div class="circle red" onclick="showPredictionDetails('2024-12-13', 'Chelsea', 'ผิด')"></div>
+        <div class="circle green" onclick="showPredictionDetails('2024-12-14', 'Manchester United', 'ถูก')"></div>
+        <div class="circle green" onclick="showPredictionDetails('2024-12-15', 'Brighton', 'ถูก')"></div>
+        <div class="circle red" onclick="showPredictionDetails('2024-12-16', 'Leicester', 'ผิด')"></div>
+        <div class="circle green" onclick="showPredictionDetails('2024-12-17', 'Tottenham', 'ถูก')"></div>
+        <div class="circle green" onclick="showPredictionDetails('2024-12-18', 'Everton', 'ถูก')"></div>
+        <div class="circle green" onclick="showPredictionDetails('2024-12-19', 'Leeds', 'ถูก')"></div>
+    </div>
+
+    <!-- กล่องข้อความแสดงรายละเอียด -->
+    <div id="prediction-details" class="prediction-details hidden">
+        <p id="details-text"></p>
+        <button onclick="closeDetails()">ปิด</button>
+    </div>
 </section>
 
+ <!-- การทำงานของ ai -->
+<div id="ai-workflow">
+    <h2>⚙️ การทำงานของ AI</h2>
+    <div class="workflow-container">
+        <div class="workflow-step">
+            <h3>📊 ขั้นตอนที่ 1</h3>
+            <p>รวบรวมข้อมูลเชิงลึกจากการแข่งขันฟุตบอล</p>
+        </div>
+        <div class="workflow-step">
+            <h3>🤖 ขั้นตอนที่ 2</h3>
+            <p>ประมวลผลด้วย AI & Machine Learning</p>
+        </div>
+        <div class="workflow-step">
+            <h3>📈 ขั้นตอนที่ 3</h3>
+            <p>คาดการณ์ผลลัพธ์อย่างแม่นยำ</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    #ai-workflow {
+        text-align: center;
+        margin: 40px auto;
+    }
+    #ai-workflow h2 {
+        color: #3fc1c9;
+        font-family: 'Arial', sans-serif;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    .workflow-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    .workflow-step {
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        color: #fff;
+        padding: 15px 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        flex: 1;
+        max-width: 300px;
+    }
+    .workflow-step h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    .workflow-step p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #dfe4ea;
+    }
+    .workflow-step:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+</style>
 
     <!-- Top Performing Teams -->
     <section id="top-performing-teams">
-        <h2 class="section-title gradient-text">สัปดาห์นี้มาแน่นอน</h2>
+        <h2 class="section-title gradient-text">“Place Your Bets – Guaranteed Hits This Week!”</h2>
         <div class="table-container">
             <table>
                 <thead>
@@ -90,43 +192,10 @@
 </section>
     </section>
 
-    <!-- Best Handicap Performers -->
-    <section id="best-handicap-performers">
-        <h2 class="section-title gradient-text">อัตราการผ่านราคาต่อรอง</h2>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ทีม</th>
-                        <th>ลีก</th>
-                        <th>ชนะราคาต่อรอง</th>
-                        <th>ประวัติราคาต่อรอง</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for team in top_handicap_teams %}
-                    <tr>
-                        <td>{{ team.selected_team }}</td>
-                        <td>{{ team.league }}</td>
-                        <td>{{ team.handicap_success_count }}</td>
-                        <td>
-                            {% for performance in team.handicap_performance %}
-                                <span class="circle {% if performance == 'green' %}green{% else %}red{% endif %}"></span>
-                            {% endfor %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div style="text-align: center; margin-top: 20px;">
-            <button>ดูรายละเอียดเพิ่มเติม</button>
-        </div>
-    </section>
-
+    
     <!-- Fixtures Section -->
     <section>
-        <h2 class="section-title gradient-text">ราคาต่อรอง พรีเมียร์ลีก</h2>
+        <h2 class="section-title gradient-text">Premier League – Bet on This Week’s Top Matches!</h2>
         <div class="table-container">
             <table>
                 <thead>
@@ -152,7 +221,7 @@
     </section>
     
     <section>
-        <h2 class="section-title gradient-text">ราคาต่อรอง ลาลีก้า</h2>
+        <h2 class="section-title gradient-text">La Liga – Back Your Favorites This Week!</h2>
         <div class="table-container">
             <table>
                 <thead>
@@ -178,7 +247,7 @@
     </section>
     
     <section>
-        <h2 class="section-title gradient-text">ราคาต่อรอง ซีรี่ อาร์</h2>
+        <h2 class="section-title gradient-text">Serie A – Your Winning Picks Await!</h2>
         <div class="table-container">
             <table>
                 <thead>
@@ -203,6 +272,18 @@
         </div>
     </section>
 
+    <script>
+        function showPredictionDetails(date, team, result) {
+            const detailsText = `ทีมที่ทาย: ${team}\nสถานะ: ${result}\nวันที่: ${date}`;
+            document.getElementById('details-text').innerText = detailsText;
+            document.getElementById('prediction-details').classList.remove('hidden');
+        }
+    
+        function closeDetails() {
+            document.getElementById('prediction-details').classList.add('hidden');
+        }
+    </script>
+    
 
     <!-- Footer -->
     <footer class="footer">
